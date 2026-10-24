@@ -12,6 +12,10 @@ python -m http.server 8000
 
 Mở http://localhost:8000. Không mở `index.html` trực tiếp bằng `file://`, vì trình duyệt có thể chặn ES Modules.
 
+## Nhạc nền ambient
+
+Nút **♫ AMBIENCE OFF/ON** phát/tắt nhạc ambient chill được tổng hợp trực tiếp bằng Web Audio API (pad synth, hợp âm chuyển chậm và delay nhẹ). Trình duyệt yêu cầu thao tác bấm của người dùng trước khi phát; mặc định nhạc tắt. Có thanh chỉnh âm lượng riêng trong bảng điều khiển.
+
 ## Điều khiển
 
 - Kéo chuột để xoay; cuộn để zoom; bật Orbit để chủ động khám phá.
