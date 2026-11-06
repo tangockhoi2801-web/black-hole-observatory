@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#081a2d">
+<meta name="description" content="CHEM12 EXAM BANK - Ngân hàng đề thi Hóa học 12 theo ma trận giữa học kì I 2026-2027.">
+<title>CHEM12 EXAM BANK | Ngân hàng đề thi Hóa 12</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar" id="sidebar">
+<a class="brand" href="#home"><span class="brand-icon">CH<sub>12</sub></span><span><b>CHEM12 <em>EXAM</em></b><small>EXAMINATION BANK</small></span></a>
+<div class="side-label">KHÔNG GIAN ÔN TẬP</div>
+<nav class="nav">
+<button class="nav-link active" data-view="home"><i>⌂</i>Tổng quan</button>
+<button class="nav-link" data-view="library"><i>▤</i>Thư viện đề thi <b id="nav-count">05</b></button>
+<button class="nav-link" data-view="practice"><i>✳</i>Luyện theo chủ đề</button>
+<button class="nav-link" data-view="history"><i>◷</i>Lịch sử làm bài</button>
+<div class="side-label separated">HỆ THỐNG</div>
+<button class="nav-link" data-view="matrix"><i>▦</i>Ma trận & kiểm định</button>
+<button class="nav-link" data-view="admin"><i>⚙</i>Quản trị ngân hàng</button>
+</nav>
+<div class="sidebar-bottom">
+<div class="scope"><span></span><div><b>PHẠM VI HIỆN TẠI</b><small>Giữa học kì I · 2026–2027</small></div></div>
+<div class="profile"><b>12</b><span><strong>Học sinh Hóa 12</strong><small>Dữ liệu lưu trên thiết bị</small></span></div>
+</div>
+</aside>
+<main class="main">
+<header class="topbar"><div class="top-left"><button class="mobile-menu" id="mobile-menu">☰</button><div class="breadcrumb">CHEM12 EXAM BANK <span>/</span> <b id="breadcrumb">Tổng quan</b></div></div><div class="top-actions"><span class="online"><i></i> Hệ thống sẵn sàng</span><button id="theme" class="theme" title="Đổi giao diện">◐</button></div></header>
+<div id="app" class="content"></div>
+<footer class="footer"><span>CHEM12 EXAM BANK <b>•</b> HÓA HỌC 12</span><span>Dữ liệu học tập lưu cục bộ trong trình duyệt.</span></footer>
+</main>
+</div>
+<div class="toast" id="toast"></div>
+<script defer src="matrix-exams.js"></script>
+<script defer src="extra-exams.js"></script>
+<script defer src="app.js"></script>
+</body></html>
