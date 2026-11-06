@@ -77,3 +77,20 @@ Các nguồn sau được dùng để đối chiếu cấu trúc chủ đề và
 - [OpenStax Chemistry 2e – Organic Chemistry](https://openstax.org/books/chemistry-2e/pages/20-introduction): nhóm chức hữu cơ, ester, amine và amide.
 
 Các nguồn tham khảo không thay thế việc giáo viên rà soát đáp án, thuật ngữ, phạm vi kiến thức và mức độ phù hợp với sách giáo khoa nhà trường đang sử dụng.
+
+
+## Bộ đề kiểm tra giữa kì I theo ma trận 2026–2027
+
+Mục **Đề thi theo ma trận** được xây dựng từ tệp ma trận/đặc tả do người học cung cấp. Có 3 mã đề, mỗi đề giữ cùng cấu trúc:
+- 16 câu nhiều lựa chọn (4,00 điểm): 12 câu nhận biết, 4 câu thông hiểu.
+- 3 câu đúng/sai, mỗi câu 4 mệnh đề (12 mệnh đề, 3,00 điểm): 4 ý nhận biết, 8 ý thông hiểu.
+- 4 câu trả lời ngắn (2,00 điểm), đều ở mức vận dụng.
+- 1 câu tự luận (1,00 điểm), ở mức vận dụng.
+
+Tổng phân bố điểm theo cấp độ tư duy: nhận biết 4,00 điểm; thông hiểu 3,00 điểm; vận dụng 3,00 điểm. Tổng điểm mỗi đề là 10,00.
+
+Phạm vi: Ester – lipid; Carbohydrate; Hợp chất chứa nitrogen; phần tổng hợp kiến thức của ba chủ đề. Các nội dung không nằm trong ma trận giữa kì I này như polymer, điện hóa và đại cương kim loại không được đưa vào các mã đề.
+
+**Cách chấm:** Phần I và II được chấm tự động theo 0,25 điểm/câu hoặc mệnh đề. Phần III và IV hiển thị đáp án tham khảo, các bước giải và barem để người học tự đối chiếu. Tài liệu ma trận không cung cấp barem chi tiết hơn cho các câu tự luận ngắn và câu tự luận, vì vậy phần tự chấm được đánh dấu rõ là tự đánh giá, không phải điểm chấm chính thức.
+
+Các đề và lời giải là nội dung biên soạn mới theo yêu cầu cần đạt của bản đặc tả, không phải đề thi chính thức của nhà trường.
