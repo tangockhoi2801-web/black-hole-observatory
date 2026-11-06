@@ -27,7 +27,7 @@ tf:[
 F("II.1","Một nhóm học sinh so sánh ester, chất béo, xà phòng và chất giặt rửa. Xét các phát biểu sau.",[
 ["Ester đơn chức, mạch hở thường có nhóm chức –COO–.",true,"Nhóm –COO– là nhóm chức đặc trưng của ester carboxylic."],
 ["Chất béo là triester của glycerol với các acid béo.",true,"Ba nhóm –OH của glycerol được ester hóa với các acid béo, tạo triacylglycerol."],
-["Thủy phân ester trong môi trường kiềm tạo muối carboxylate và alcohol.",true,"RCOOR′ + NaOH → RCOONa + R′OH; sản phẩm acid tồn tại ở dạng muối trong môi trường kiềm."],
+["Thủy phân ester trong môi trường kiềm tạo muối carboxylate và alcohol; xà phòng hóa chất béo còn tạo glycerol và muối acid béo.",true,"Ester đơn chức tạo carboxylate và alcohol; triester của glycerol khi xà phòng hóa tạo glycerol và ba muối carboxylate."],
 ["Xà phòng thường kém hiệu quả trong nước cứng vì Ca²⁺ và Mg²⁺ có thể tạo muối ít tan với anion của xà phòng.",true,"Muối calcium/magnesium của acid béo ít tan, làm giảm lượng chất hoạt động bề mặt còn trong dung dịch."]
 ]),
 F("II.2","Một mẫu lòng trắng trứng được dùng để khảo sát tính chất của protein và vai trò enzyme. Xét các phát biểu sau.",[
@@ -38,9 +38,9 @@ F("II.2","Một mẫu lòng trắng trứng được dùng để khảo sát tí
 ]),
 F("II.3","Một phòng thực hành có các mẫu glucose, methylamine, amino acid và peptide. Xét các phát biểu tổng hợp sau.",[
 ["Methylamine thuộc loại amine vì có thể xem là sản phẩm thay một hydrogen của NH₃ bằng nhóm methyl.",true,"CH₃NH₂ có cấu tạo phù hợp định nghĩa amine, thuộc amine bậc một."],
-["Glucose có thể tham gia phản ứng tráng bạc do dạng mạch hở có nhóm aldehyde.",true,"Nhóm –CHO của glucose bị oxi hóa, ion bạc bị khử thành bạc kim loại."],
+["Glucose có thể tham gia phản ứng tráng bạc và lên men rượu tạo ethanol, carbon dioxide.",true,"Glucose có tính khử do dạng mạch hở chứa –CHO; trong điều kiện lên men thích hợp, C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂."],
 ["Amino acid có thể ester hóa nhóm –COOH với alcohol trong điều kiện acid thích hợp.",true,"Nhóm carboxyl của amino acid có thể tham gia phản ứng ester hóa; cần xét môi trường phản ứng vì nhóm amino cũng có tính base."],
-["Glucose ở dạng mạch vòng có nhóm –OH hemiacetal; nhóm này có thể tham gia phản ứng tạo glycoside với alcohol trong điều kiện acid.",true,"Nhóm –OH hemiacetal ở carbon anomeric có thể chuyển thành nhóm –OR khi phản ứng với alcohol, tạo glycoside."]
+["Glucose ở dạng mạch vòng có nhóm –OH hemiacetal có thể tạo glycoside với alcohol; cellulose có thể tạo dẫn xuất nitrate khi phản ứng với nitric acid trong điều kiện thích hợp.",true,"Nhóm –OH hemiacetal ở carbon anomeric của glucose có thể tạo glycoside; nhiều nhóm –OH của cellulose có thể bị nitrate hóa để tạo cellulose nitrate."]
 ])
 ],
 short:[
@@ -86,9 +86,9 @@ F("II.2","Một số thí nghiệm được thực hiện với dung dịch prot
 ]),
 F("II.3","Các mẫu thử thuộc ba chủ đề ester–lipid, carbohydrate và hợp chất chứa nitrogen được khảo sát bằng thuốc thử.",[
 ["Aniline là amine thơm vì nhóm –NH₂ gắn trực tiếp với vòng benzene.",true,"Cách phân loại dựa trên gốc hydrocarbon liên kết trực tiếp với nitrogen."],
-["Glucose làm mất màu nước bromine do nhóm aldehyde ở dạng mạch hở bị oxi hóa.",true,"Nước bromine oxi hóa nhóm –CHO thành nhóm carboxyl trong điều kiện phù hợp."],
+["Glucose làm mất màu nước bromine do nhóm aldehyde bị oxi hóa; glucose cũng hòa tan Cu(OH)₂ ở nhiệt độ thường tạo dung dịch xanh lam.",true,"Nhóm –CHO của glucose bị nước bromine oxi hóa; nhiều nhóm –OH liền kề giúp glucose tạo phức xanh lam với Cu(OH)₂ ở nhiệt độ thường."],
 ["Dung dịch methylamine có thể tạo kết tủa Fe(OH)₃ khi tác dụng với FeCl₃ do môi trường có tính base.",true,"Methylamine nhận proton từ nước, tạo OH⁻; ion Fe³⁺ kết hợp OH⁻ tạo kết tủa Fe(OH)₃ nâu đỏ."],
-["Methylamine có thể tạo phức với Cu(OH)₂ trong điều kiện thích hợp.",true,"Phân tử amine có cặp electron tự do trên nitrogen, có thể phối trí với Cu(II), tạo phức màu xanh đậm trong điều kiện phù hợp."]
+["Methylamine có thể phản ứng với HCl tạo muối methylammonium chloride và có thể tạo phức với Cu(OH)₂ trong điều kiện thích hợp.",true,"CH₃NH₂ + HCl → CH₃NH₃Cl; cặp electron tự do trên nitrogen cũng có thể phối trí với Cu(II), tạo phức màu xanh đậm."]
 ])
 ],
 short:[
@@ -136,7 +136,7 @@ F("II.3","Một mẫu hỗn hợp bài tập kết hợp tính chất carbohydra
 ["Glucose và fructose có cùng công thức phân tử C₆H₁₂O₆ nhưng cấu tạo khác nhau.",true,"Glucose là aldohexose, fructose là ketohexose; chúng là đồng phân cấu tạo."],
 ["Fructose có thể tham gia phản ứng Tollens trong môi trường kiềm dù là ketose.",true,"Fructose chuyển hóa qua trung gian enediol thành aldose, sau đó có thể khử ion bạc."],
 ["Methylamine là amine bậc một; phản ứng với nitrous acid có thể giải phóng nitrogen.",true,"Amine bậc một no mạch hở phản ứng với HNO₂ tạo alcohol tương ứng, nitrogen và nước."],
-["Amino acid ở pH lớn hơn pI thường có điện tích tổng âm.",true,"Môi trường base làm amino acid mất proton, tạo dạng anion; anion chuyển về anode dương."]
+["Amine có thể được điều chế bằng cách khử hợp chất nitro hoặc thay thế hydrogen của ammonia bằng gốc hydrocarbon thích hợp.",true,"Hai hướng điều chế được nêu trong đặc tả: khử hợp chất nitro và alkyl hóa/thế hydrogen của NH₃."]
 
 ])
 ],
