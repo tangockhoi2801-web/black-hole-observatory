@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#071a35">
+<meta name="description" content="CHEM12 LAB - Không gian học tập, luyện tập và khám phá Hóa học lớp 12 bằng tiếng Việt.">
+<title>CHEM12 LAB | Học Hóa 12 thông minh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"><script defer src="app.js"></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="brand" href="#tong-quan" aria-label="CHEM12 LAB - Trang chủ"><span class="brand-mark"><span class="brand-orbit"></span><span class="brand-dot"></span></span><span><strong>CHEM12 <em>LAB</em></strong><small>PHÒNG THÍ NGHIỆM TRI THỨC</small></span></a>
+<div class="side-label">KHÔNG GIAN HỌC TẬP</div>
+<nav class="nav-list" id="main-nav" aria-label="Điều hướng chính">
+<button class="nav-item active" data-view="home"><span class="nav-icon">⌂</span><span>Tổng quan</span></button>
+<button class="nav-item" data-view="knowledge"><span class="nav-icon">▤</span><span>Kiến thức Hóa học</span><span class="nav-count">09</span></button>
+<button class="nav-item" data-view="practice"><span class="nav-icon">✳</span><span>Luyện tập</span></button>
+<button class="nav-item" data-view="exam"><span class="nav-icon">◷</span><span>Kiểm tra</span></button>
+<div class="side-label side-label-spaced">PHÒNG THÍ NGHIỆM</div>
+<button class="nav-item" data-view="equations"><span class="nav-icon">⚗</span><span>Viết phương trình</span></button>
+<button class="nav-item" data-view="lab"><span class="nav-icon">⌁</span><span>Mô phỏng phản ứng</span></button>
+<button class="nav-item" data-view="experiments"><span class="nav-icon">◉</span><span>Thí nghiệm ảo</span></button>
+<div class="side-label side-label-spaced">TRA CỨU & CÁ NHÂN</div>
+<button class="nav-item" data-view="reference"><span class="nav-icon">▦</span><span>Thư viện tra cứu</span></button>
+<button class="nav-item" data-view="progress"><span class="nav-icon">↗</span><span>Tiến độ học tập</span></button>
+<button class="nav-item" data-view="notebook"><span class="nav-icon">▧</span><span>Sổ lỗi sai</span><span class="nav-count" id="error-count">0</span></button>
+</nav>
+<div class="sidebar-bottom">
+<div class="streak-card"><div class="streak-top"><span class="streak-flame">✦</span><span>NHỊP HỌC TẬP</span><b id="streak-days">0 ngày</b></div><p>Học đều từng chút. Kiến thức sẽ tự kết nối.</p><div class="streak-track"><i id="streak-fill"></i></div></div>
+<button class="nav-item settings-link" data-view="settings"><span class="nav-icon">⚙</span><span>Cài đặt</span></button>
+<div class="profile-mini"><div class="avatar">12</div><div><strong>Học sinh Hóa 12</strong><small>Hồ sơ trên thiết bị này</small></div><span class="online-dot"></span></div>
+</div>
+</aside>
+<main class="main-area">
+<header class="topbar"><div class="topbar-left"><button class="mobile-menu" id="mobile-menu" aria-label="Mở điều hướng">☰</button><div class="breadcrumb"><span>CHEM12 LAB</span><b>/</b><strong id="breadcrumb-current">Tổng quan</strong></div></div><div class="topbar-actions"><label class="global-search"><span>⌕</span><input id="global-search" type="search" placeholder="Tìm chương, phản ứng, công thức..." autocomplete="off"><kbd>⌘ K</kbd></label><button class="icon-button" id="theme-toggle" aria-label="Đổi giao diện" title="Đổi giao diện">◐</button><div class="top-avatar">12</div></div></header>
+<div class="content-wrap" id="view-root">
+<section class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-pulse"></span> KHÔNG GIAN HỌC TẬP HÓA HỌC 12</div><h1>Học sâu. Hiểu bản chất.<br><span>Làm chủ Hóa học.</span></h1><p class="welcome-copy">Một phòng thí nghiệm số để kết nối lý thuyết, phản ứng hóa học và tư duy giải bài tập.</p><div class="welcome-actions"><button class="btn btn-primary" data-goto="knowledge">Khám phá kiến thức <span>↗</span></button><button class="btn btn-quiet" data-goto="practice">Bắt đầu luyện tập <span>→</span></button></div></div>
+<div class="hero-visual" aria-hidden="true"><div class="hero-grid"></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="molecule-core">C</div><span class="atom atom-a">H</span><span class="atom atom-b">O</span><span class="atom atom-c">Na</span><span class="atom atom-d">Fe</span><div class="visual-caption"><i></i> LEARN · EXPLORE · MASTER</div></div></section>
+<section class="stats-grid" id="home-stats">
+<article class="stat-card"><div class="stat-icon cyan">▤</div><div><span>CHƯƠNG KIẾN THỨC</span><strong id="stat-chapters">09</strong><small>Hệ thống theo chủ đề</small></div></article>
+<article class="stat-card"><div class="stat-icon violet">✳</div><div><span>CÂU HỎI SẴN CÓ</span><strong id="stat-questions">24</strong><small>Trắc nghiệm · Đúng sai · Trả lời ngắn</small></div></article>
+<article class="stat-card"><div class="stat-icon mint">✓</div><div><span>ĐỘ CHÍNH XÁC</span><strong id="stat-accuracy">—</strong><small id="stat-attempts">Chưa có lượt làm bài</small></div></article>
+<article class="stat-card"><div class="stat-icon amber">◷</div><div><span>THỜI GIAN HỌC</span><strong id="stat-time">0</strong><small>Phút luyện tập đã ghi nhận</small></div></article>
+</section>
+<section class="section-block"><div class="section-heading"><div><div class="eyebrow">LỘ TRÌNH CỦA BẠN</div><h2>Tiếp tục hành trình học tập</h2><p>Chọn một mảng kiến thức để bắt đầu.</p></div><button class="text-link" data-goto="knowledge">Tất cả chương <span>→</span></button></div><div class="module-grid" id="home-modules"></div></section>
+<section class="dashboard-bottom">
+<article class="panel focus-panel"><div class="panel-heading"><div><div class="eyebrow">LUYỆN TẬP CÓ CHỦ ĐÍCH</div><h3>Đừng chỉ làm nhiều câu hỏi.</h3></div><span class="panel-symbol">✳</span></div><p>Hãy chọn đúng dạng bài đang yếu, xem lời giải, ghi lại lỗi và luyện lại sau đó.</p><div class="focus-list"><div><span class="focus-number">01</span><span><b>Chẩn đoán</b><small>Xác định lỗ hổng kiến thức.</small></span></div><div><span class="focus-number">02</span><span><b>Giải thích</b><small>Hiểu vì sao đáp án đúng hoặc sai.</small></span></div><div><span class="focus-number">03</span><span><b>Củng cố</b><small>Luyện lại câu từng làm sai.</small></span></div></div><button class="btn btn-primary" data-goto="practice">Tạo phiên luyện tập <span>↗</span></button></article>
+<article class="panel activity-panel"><div class="section-heading compact"><div><div class="eyebrow">HOẠT ĐỘNG GẦN ĐÂY</div><h3>Lịch sử học tập</h3></div><button class="text-link" data-goto="progress">Chi tiết →</button></div><div id="recent-activity" class="activity-list"><div class="empty-state small-empty"><span>◷</span><p>Chưa có hoạt động. Bài luyện đầu tiên sẽ xuất hiện ở đây.</p></div></div></article>
+</section>
+<footer class="footer"><span>CHEM12 LAB <i>•</i> BẢN THỬ NGHIỆM HỌC TẬP</span><span>Nội dung cần tiếp tục đối chiếu với SGK và giáo viên bộ môn.</span></footer>
+</div>
+</main></div>
+<div class="toast-region" id="toast-region" aria-live="polite"></div>
+<div class="modal-backdrop" id="modal-backdrop" hidden><div class="modal-card" id="modal-card" role="dialog" aria-modal="true"></div></div>
+</body></html>
