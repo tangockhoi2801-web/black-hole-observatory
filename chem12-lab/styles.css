@@ -87,3 +87,14 @@ body.dark .review-footer{border-color:#283d56}
 body.dark .mx-blueprint,body.dark .mx-set-card,body.dark .mx-question,body.dark .mx-history-row{background:#142237;border-color:#263a54}body.dark .mx-blueprint h2,body.dark .mx-set-card h3,body.dark .mx-question p,body.dark .mx-history-row b{color:#d2e0ed}body.dark .mx-blueprint-grid>div,body.dark .mx-exam-instruction,body.dark .mx-context,body.dark .mx-explanation,body.dark .mx-solution{background:#1a304a;border-color:#2b465e;color:#b4c6d8}body.dark .mx-option{background:#192f48;border-color:#30485f;color:#b8c9d8}body.dark .mx-option.is-correct{background:#173b34;color:#9bdec0}body.dark .mx-option.is-wrong{background:#422f32;color:#eeb5aa}body.dark .mx-tf-buttons button,body.dark .mx-self-grade select,body.dark .mx-answer-area{background:#1a304a;border-color:#38536d;color:#d2e0ed}body.dark .mx-note,body.dark .mx-source-note{background:#192e43;border-color:#2a425a;color:#a6b7c7}body.dark .mx-score-panel{background:#173436;border-color:#305b57}
 @media(max-width:800px){.mx-set-grid{grid-template-columns:1fr 1fr}.mx-blueprint-grid{grid-template-columns:1fr 1fr}.mx-score-panel{grid-template-columns:1fr 1fr}.mx-history-row{grid-template-columns:1fr auto}.mx-history-row strong{grid-column:2}}
 @media(max-width:600px){.mx-set-grid{grid-template-columns:1fr}.mx-tf-statement{grid-template-columns:1fr;gap:7px}.mx-tf-buttons{justify-content:flex-end}.mx-submit-row{align-items:flex-start;flex-direction:column}.mx-submit-row button{width:100%}.mx-exam-header h1{font-size:20px}.mx-score-panel{grid-template-columns:1fr 1fr}}
+
+/* Matrix exam entry: keep it visible near the top of the sidebar and on the home screen. */
+.brand,.side-label,.matrix-nav-cta,.nav-list,.sidebar-bottom{flex-shrink:0}
+.matrix-nav-cta{margin:0 2px 17px;min-height:46px;border:1px solid rgba(69,211,222,.3);background:linear-gradient(100deg,rgba(40,121,232,.25),rgba(39,196,216,.12));color:#e8fbff;font-weight:800;box-shadow:inset 0 1px rgba(255,255,255,.05)}
+.matrix-nav-cta:hover{background:linear-gradient(100deg,rgba(40,121,232,.38),rgba(39,196,216,.2));border-color:rgba(69,211,222,.55);color:#fff}
+.matrix-nav-cta.active{background:linear-gradient(100deg,rgba(40,121,232,.42),rgba(39,196,216,.2));border-color:rgba(69,211,222,.6);box-shadow:inset 2px 0 #45d3de,0 5px 18px rgba(0,0,0,.12)}
+.matrix-nav-cta .nav-icon{color:#54dce5}
+.matrix-nav-cta .nav-count{color:#a6e9ed;white-space:nowrap}
+.btn-matrix-quick{background:#e8f8fb;border-color:#cceef2;color:#157e91}
+.btn-matrix-quick:hover{background:#ddf5f8;border-color:#83d9e2;color:#126b7b}
+.btn-matrix-quick span{margin-left:8px}
