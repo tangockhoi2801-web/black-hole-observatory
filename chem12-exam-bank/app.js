@@ -13,6 +13,9 @@ let view="home",active=null,nodes=[],answers={},flags={},index=0,seconds=Number(
 let practice=[],practiceIndex=0,practiceDone=false,practiceCorrect=false;
 const TOPIC_MAP={"I.1":"Ester – lipid","I.2":"Xà phòng và chất giặt rửa","I.3":"Ester – lipid","I.4":"Giới thiệu carbohydrate, glucose và fructose","I.5":"Giới thiệu carbohydrate, glucose và fructose","I.6":"Saccharose và maltose","I.7":"Saccharose và maltose","I.8":"Tinh bột và cellulose","I.9":"Tinh bột và cellulose","I.10":"Amine","I.11":"Amine","I.12":"Amino acid và peptide","I.13":"Amino acid và peptide","I.14":"Amino acid và peptide","I.15":"Protein và enzyme","I.16":"Protein và enzyme","II.1":"Xà phòng và chất giặt rửa","II.2":"Protein và enzyme","II.3":"Tổng hợp","III.1":"Ester – lipid","III.2":"Saccharose và maltose","III.3":"Amine","III.4":"Tổng hợp","IV.1":"Amino acid và peptide"};
 const LEVEL={B:"Biết",H:"Hiểu",VD:"Vận dụng"};
+const MC_LEVELS={"I.1":"B","I.2":"B","I.3":"H","I.4":"B","I.5":"B","I.6":"B","I.7":"H","I.8":"B","I.9":"H","I.10":"B","I.11":"B","I.12":"B","I.13":"B","I.14":"H","I.15":"B","I.16":"B"};
+const TF_LEVELS={"II.1":["B","B","H","H"],"II.2":["B","H","H","H"],"II.3":["B","H","H","H"]};
+const TOPIC_POINTS={"Ester – lipid":1,"Xà phòng và chất giặt rửa":1.25,"Giới thiệu carbohydrate, glucose và fructose":0.5,"Saccharose và maltose":1,"Tinh bột và cellulose":0.5,"Amine":1,"Amino acid và peptide":1.75,"Protein và enzyme":1.5,"Tổng hợp":1.5};
 function load(k,f){try{const v=localStorage.getItem(k);return v?JSON.parse(v):f}catch(e){return f}}
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){notify("Không thể lưu dữ liệu trong bộ nhớ trình duyệt.")}}
 function notify(s){const t=$("#toast");t.textContent=s;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2500)}
@@ -20,19 +23,72 @@ function norm(s){return String(s==null?"":s).normalize("NFD").replace(/[\u0300-\
 function topicOf(id,q){return TOPIC_MAP[id]||(q&&q.topic)||"Tổng hợp"}
 function flat(exam){return [].concat((exam.mcq||[]).map(q=>({kind:"mcq",id:q.id,q})),(exam.tf||[]).map(q=>({kind:"tf",id:q.id,q})),(exam.short||[]).map(q=>({kind:"short",id:q.id,q})),exam.essay?[{kind:"essay",id:exam.essay.id||"IV.1",q:exam.essay}]:[])}
 function validate(exam){
- const e=[];if(!exam||!Array.isArray(exam.mcq)||exam.mcq.length!==16)e.push("Phần I cần 16 câu nhiều lựa chọn.");
- if(!exam||!Array.isArray(exam.tf)||exam.tf.length!==3)e.push("Phần II cần 3 cụm đúng–sai.");
- if(!exam||!Array.isArray(exam.short)||exam.short.length!==4)e.push("Phần III cần 4 câu trả lời ngắn.");
- if(!exam||!exam.essay)e.push("Thiếu câu tự luận IV.1.");
- const m=(exam&&exam.mcq)||[],mb=m.filter(q=>q.level==="B").length,mh=m.filter(q=>q.level==="H").length;
- if(mb!==12||mh!==4)e.push("Phần I cần 12 Biết và 4 Hiểu (hiện "+mb+"/"+mh+").");
- const st=((exam&&exam.tf)||[]).flatMap(g=>g.statements||[]),tb=st.filter(q=>q.level==="B").length,th=st.filter(q=>q.level==="H").length;
- if(st.length!==12)e.push("Phần II cần đúng 12 nhận định.");if(tb!==4||th!==8)e.push("Phần II cần 4 Biết và 8 Hiểu (hiện "+tb+"/"+th+").");
- const sh=(exam&&exam.short)||[];if(sh.length!==4||sh.some(q=>q.level!=="VD"))e.push("Cả 4 câu phần III phải là Vận dụng.");
- if(exam&&exam.essay&&exam.essay.level!=="VD")e.push("Câu IV.1 phải là Vận dụng.");
- for(let i=1;i<=16;i++)if(!m.some(q=>q.id==="I."+i))e.push("Thiếu mã I."+i+".");
- ["II.1","II.2","II.3"].forEach(id=>{const g=((exam&&exam.tf)||[]).find(x=>x.id===id);if(!g||!Array.isArray(g.statements)||g.statements.length!==4)e.push(id+" cần đủ 4 nhận định.");});
- return {ok:e.length===0,issues:e,mb,mh,tb,th,statements:st.length};
+ const issues=[];
+ const m=exam&&Array.isArray(exam.mcq)?exam.mcq:[];
+ const groups=exam&&Array.isArray(exam.tf)?exam.tf:[];
+ const sh=exam&&Array.isArray(exam.short)?exam.short:[];
+ const essay=exam&&exam.essay?exam.essay:null;
+ if(m.length!==16)issues.push("Phần I cần đúng 16 câu nhiều lựa chọn.");
+ if(groups.length!==3)issues.push("Phần II cần đúng 3 cụm đúng–sai.");
+ if(sh.length!==4)issues.push("Phần III cần đúng 4 câu trả lời ngắn.");
+ if(!essay)issues.push("Thiếu câu tự luận IV.1.");
+ const mb=m.filter(q=>q&&q.level==="B").length,mh=m.filter(q=>q&&q.level==="H").length;
+ if(mb!==12||mh!==4||m.some(q=>q&&q.level==="VD"))issues.push("Phần I cần 12 câu Biết và 4 câu Hiểu.");
+ for(const [id,level] of Object.entries(MC_LEVELS)){
+  const q=m.find(x=>x&&x.id===id);
+  if(!q)issues.push("Thiếu mã "+id+".");
+  else{
+   if(q.level!==level)issues.push(id+" sai mức độ tư duy.");
+   if(!String(q.prompt||"").trim()||!q.why||!q.wrong)issues.push(id+" thiếu nội dung hoặc giải thích.");
+   if(!Array.isArray(q.options)||q.options.length!==4||!Number.isInteger(q.answer)||q.answer<0||q.answer>3)issues.push(id+" phải có 4 lựa chọn và một đáp án hợp lệ.");
+   else if(new Set(q.options.map(x=>String(x).trim())).size!==4)issues.push(id+" có phương án trùng nhau.");
+   if(Array.isArray(q.wrong)&&q.wrong.length!==4)issues.push(id+" cần giải thích đủ 4 phương án.");
+  }
+ }
+ const expectedGroupIds=["II.1","II.2","II.3"];
+ const allStatements=[];
+ expectedGroupIds.forEach(id=>{
+  const g=groups.find(x=>x&&x.id===id);
+  if(!g||!Array.isArray(g.statements)||g.statements.length!==4){issues.push(id+" cần đủ 4 nhận định.");return}
+  const levels=TF_LEVELS[id];
+  g.statements.forEach((s,i)=>{
+   allStatements.push(s);
+   const sub=id+String.fromCharCode(97+i);
+   if(s.id!==sub)issues.push("Sai mã nhận định, cần "+sub+".");
+   if(s.level!==levels[i])issues.push(sub+" sai mức độ tư duy.");
+   if(typeof s.answer!=="boolean"||!String(s.text||"").trim()||!s.why)issues.push(sub+" thiếu nhận định, đáp án Đúng/Sai hoặc giải thích.");
+  });
+ });
+ const tb=allStatements.filter(q=>q&&q.level==="B").length,th=allStatements.filter(q=>q&&q.level==="H").length;
+ if(allStatements.length!==12||tb!==4||th!==8)issues.push("Phần II cần 12 nhận định: 4 Biết và 8 Hiểu.");
+ ["III.1","III.2","III.3","III.4"].forEach(id=>{
+  const q=sh.find(x=>x&&x.id===id);
+  if(!q)issues.push("Thiếu mã "+id+".");
+  else{
+   if(q.level!=="VD")issues.push(id+" phải ở mức Vận dụng.");
+   if(!q.expected||!Array.isArray(q.steps)||!q.steps.length||!Array.isArray(q.rubric)||Math.abs(q.rubric.reduce((s,r)=>s+Number(r[1]||0),0)-0.5)>0.001)issues.push(id+" thiếu đáp án, các bước giải hoặc rubric 0,50 điểm.");
+  }
+ });
+ if(essay){
+  if(essay.id!=="IV.1")issues.push("Câu tự luận phải mang mã IV.1.");
+  if(essay.level!=="VD")issues.push("Câu IV.1 phải ở mức Vận dụng.");
+  if(!essay.expected||!Array.isArray(essay.steps)||!essay.steps.length||!Array.isArray(essay.rubric)||Math.abs(essay.rubric.reduce((s,r)=>s+Number(r[1]||0),0)-1)>0.001)issues.push("IV.1 thiếu đáp án, hướng giải hoặc rubric 1,00 điểm.");
+ }
+ const ids=[...m.map(q=>q&&q.id),...allStatements.map(q=>q&&q.id),...sh.map(q=>q&&q.id),...(essay?[essay.id]:[])];
+ if(new Set(ids).size!==ids.length)issues.push("Có mã câu hỏi bị trùng trong cùng một đề.");
+ const tfPoint=Number(settings.tfPoint==null?0.25:settings.tfPoint);
+ const topicPoints={};
+ const addTopic=(id,p)=>{const t=topicOf(id);topicPoints[t]=(topicPoints[t]||0)+p};
+ m.forEach(q=>{if(q)addTopic(q.id,0.25)});
+ groups.forEach(g=>(g.statements||[]).forEach(s=>addTopic(g.id,tfPoint)));
+ sh.forEach(q=>{if(q)addTopic(q.id,0.5)});
+ if(essay)addTopic("IV.1",1);
+ Object.entries(TOPIC_POINTS).forEach(([topic,expected])=>{
+  if(Math.abs((topicPoints[topic]||0)-expected)>0.001)issues.push("Tỷ trọng điểm chủ đề "+topic+" phải là "+expected.toFixed(2)+".");
+ });
+ const totalPoints=Object.values(topicPoints).reduce((s,p)=>s+p,0);
+ if(Math.abs(totalPoints-10)>0.001)issues.push("Tổng điểm theo cấu hình hiện tại là "+totalPoints.toFixed(2)+", không bằng 10,00.");
+ return {ok:issues.length===0,issues,mb,mh,tb,th,statements:allStatements.length,topicPoints,totalPoints};
 }
 function countItems(){return bank.reduce((n,e)=>n+(e.mcq||[]).length+(e.tf||[]).reduce((s,g)=>s+(g.statements||[]).length,0)+(e.short||[]).length+(e.essay?1:0),0)}
 function scoreShort(value,q){
@@ -42,15 +98,15 @@ function scoreShort(value,q){
  const n=Number(String(q.expected||"").replace(",",".")),x=Number(String(value).replace(",","."));
  return Number.isFinite(n)&&Number.isFinite(x)&&Math.abs(n-x)<=Number(q.tolerance||1e-8);
 }
-function setView(v){view=v;$("#breadcrumb").textContent=NAMES[v]||v;$$(".nav-link").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v!=="taking"&&timer){clearInterval(timer);timer=null}render();$("#sidebar").classList.remove("open")}
+function setView(v){if(active&&v!=="taking"){notify("Bạn đang trong phòng thi. Hãy nộp bài hoặc thoát phòng thi trước khi chuyển mục.");return}view=v;$("#breadcrumb").textContent=NAMES[v]||v;$$(".nav-link").forEach(b=>b.classList.toggle("active",b.dataset.view===v));if(v!=="taking"&&timer){clearInterval(timer);timer=null}render();$("#sidebar").classList.remove("open")}
 function render(){if(view==="home")home();else if(view==="library")library();else if(view==="practice")practiceSetup();else if(view==="history")historyView();else if(view==="matrix")matrixView();else if(view==="admin")adminView();else if(view==="taking")examView();else if(view==="result")resultView()}
-function card(e){const v=validate(e);return '<article class="card"><div class="exam-top"><span class="code">'+esc(e.id)+'</span><span class="pill">'+(v.ok?"Đủ cấu trúc":"Cần rà soát")+'</span></div><h3>'+esc(e.title)+'</h3><p>'+esc(e.subtitle||"Đề kiểm tra giữa học kì I Hóa học 12")+'</p><div class="meta"><span>50 PHÚT</span><span>24 CÂU CHÍNH</span><span>10 ĐIỂM</span></div><div class="actions"><button class="btn primary small" data-action="start" data-id="'+esc(e.id)+'" '+(!v.ok?"disabled":"")+'>Bắt đầu làm bài</button><button class="btn ghost small" data-action="preview" data-id="'+esc(e.id)+'">Xem cấu trúc</button></div></article>'}
+function card(e){const v=validate(e);return '<article class="card"><div class="exam-top"><span class="code">'+esc(e.id)+'</span><span class="pill">'+(v.ok?"Đủ cấu trúc":"Cần rà soát")+'</span></div><h3>'+esc(e.title)+'</h3><p>'+esc(e.subtitle||"Đề kiểm tra giữa học kì I Hóa học 12")+'</p><div class="meta"><span>'+Number(settings.duration||50)+' PHÚT</span><span>24 CÂU CHÍNH</span><span>10 ĐIỂM</span></div><div class="actions"><button class="btn primary small" data-action="start" data-id="'+esc(e.id)+'" '+(!v.ok?"disabled":"")+'>Bắt đầu làm bài</button><button class="btn ghost small" data-action="preview" data-id="'+esc(e.id)+'">Xem cấu trúc</button></div></article>'}
 function home(){
- const valid=bank.filter(e=>validate(e).ok).length,avg=history.length?(history.reduce((s,x)=>s+(Number(x.total)||0),0)/history.length).toFixed(2):"—",resume=load(KEYS.active,null);
+ const valid=bank.filter(e=>validate(e).ok).length,scored=history.filter(x=>x.total!==null&&x.total!==undefined&&Number.isFinite(Number(x.total))),avg=scored.length?(scored.reduce((s,x)=>s+Number(x.total),0)/scored.length).toFixed(2):"—",resume=load(KEYS.active,null);
  $("#app").innerHTML='<section class="hero"><div><div class="eyebrow">NGÂN HÀNG ĐỀ KIỂM TRA · 2026–2027</div><h1>Hiểu bản chất.<br><span>Luyện đề đúng ma trận.</span></h1><p>Hệ thống ôn tập Hóa học 12 cho bài kiểm tra giữa học kì I. Các đề được tổ chức theo cấu trúc, mức độ tư duy và phạm vi nội dung của bản ma trận/đặc tả.</p><div class="hero-actions"><button class="btn primary" data-action="goto-library">Mở thư viện đề ↗</button><button class="btn ghost" data-action="random">Tạo đề ngẫu nhiên</button></div></div><div class="hero-art"><div class="orb">H₂O</div><div class="orb-label">STRUCTURE · REACTION · REASONING</div></div></section>'+
  '<section class="stats"><article class="stat"><label>ĐỀ ĐẠT KIỂM ĐỊNH CẤU TRÚC</label><strong class="accent">'+valid+'/'+bank.length+'</strong><small>Đối chiếu số lượng và mức độ</small></article><article class="stat"><label>BỘ ĐỀ TRONG THƯ VIỆN</label><strong>'+bank.length+'</strong><small>5 bộ đề theo ma trận</small></article><article class="stat"><label>LỆNH HỎI TRONG NGÂN HÀNG</label><strong>'+countItems()+'</strong><small>165 lệnh hỏi trong 5 đề mặc định</small></article><article class="stat"><label>LƯỢT LÀM BÀI</label><strong>'+history.length+'</strong><small>Điểm tự đánh giá trung bình: '+avg+'</small></article></section>'+
  (resume?'<div class="notice info" style="margin-bottom:16px"><strong>Có bài thi đang làm dở.</strong> Câu trả lời đã được lưu trong trình duyệt. <button class="btn primary small" data-action="resume">Tiếp tục bài thi</button></div>':'')+
- '<div class="section-head"><div><div class="eyebrow">THƯ VIỆN ĐỀ THI</div><h2>Chọn đề để bắt đầu</h2><p>50 phút · 24 câu chính · 10 điểm</p></div><button class="text-btn" data-action="goto-library">Xem tất cả →</button></div><div class="grid">'+bank.slice(0,4).map(card).join("")+'</div>'+
+ '<div class="section-head"><div><div class="eyebrow">THƯ VIỆN ĐỀ THI</div><h2>Chọn đề để bắt đầu</h2><p>'+Number(settings.duration||50)+' phút · 24 câu chính · 10 điểm</p></div><button class="text-btn" data-action="goto-library">Xem tất cả →</button></div><div class="grid">'+bank.slice(0,4).map(card).join("")+'</div>'+
  '<div class="panel-grid"><section class="panel"><div class="eyebrow">CẤU TRÚC ĐỀ</div><h2 style="font-size:15px;margin:7px 0 12px">Phân bố điểm</h2>'+bar("I. Nhiều lựa chọn","4,0 điểm · 40%",40)+bar("II. Đúng – sai","3,0 điểm · 30%",30)+bar("III. Trả lời ngắn","2,0 điểm · 20%",20)+bar("IV. Tự luận","1,0 điểm · 10%",10)+'</section><section class="panel"><div class="eyebrow">LUYỆN TẬP CÓ MỤC TIÊU</div><h2 style="font-size:15px;margin:7px 0 8px">Ôn đúng phần đang yếu</h2><p class="sub">Lọc câu hỏi theo chủ đề và mức độ Biết, Hiểu, Vận dụng; xem lời giải ngay sau khi trả lời.</p><button class="btn primary" style="margin-top:14px" data-action="goto-practice">Luyện theo chủ đề →</button></section></div>';
 }
 function bar(label,value,pct){return '<div class="bar-row"><div class="bar-label"><span>'+label+'</span><small>'+value+'</small></div><div class="track"><i style="width:'+pct+'%"></i></div></div>'}
@@ -85,7 +141,7 @@ function historyView(){if(!history.length){$("#app").innerHTML='<div class="eyeb
  $("#app").innerHTML='<div class="eyebrow">LEARNING RECORD</div><h1 class="page-title">Lịch sử làm bài</h1><p class="sub">Lịch sử chỉ được lưu trong trình duyệt hiện tại, không tự đồng bộ giữa các thiết bị.</p><div class="history-list">'+history.map((h,i)=>'<article class="history-item"><div><strong>'+esc(h.title)+'</strong><small>'+new Date(h.date).toLocaleString("vi-VN")+' · '+esc(h.time||"")+'</small></div><div style="display:flex;align-items:center;gap:13px"><span class="history-score">'+(h.total==null?"Chưa chấm đủ":Number(h.total).toFixed(2)+"/10")+'</span><button class="btn small ghost" data-action="history-open" data-index="'+i+'">Xem kết quả</button></div></article>').join("")+'</div><button class="btn danger small" style="margin-top:14px" data-action="history-clear">Xóa lịch sử trên thiết bị</button>'}
 function matrixView(){
  const rows=[["Ester – lipid","10%","1,00"],["Xà phòng và chất giặt rửa","12,5%","1,25"],["Giới thiệu carbohydrate, glucose và fructose","5%","0,50"],["Saccharose và maltose","10%","1,00"],["Tinh bột và cellulose","5%","0,50"],["Amine","10%","1,00"],["Amino acid và peptide","17,5%","1,75"],["Protein và enzyme","15%","1,50"],["Tổng hợp","15%","1,50"]];
- $("#app").innerHTML='<div class="eyebrow">MATRIX & QUALITY CHECK</div><h1 class="page-title">Ma trận & kiểm định</h1><p class="sub">Căn cứ ma trận và bản đặc tả đề kiểm tra giữa học kì I Hóa học 12 năm học 2026–2027.</p><div class="kpis"><span class="kpi"><b>5</b> bộ đề khởi tạo</span><span class="kpi"><b>10,0</b> điểm / đề</span><span class="kpi"><b>50</b> phút mặc định</span></div>'+
+ $("#app").innerHTML='<div class="eyebrow">MATRIX & QUALITY CHECK</div><h1 class="page-title">Ma trận & kiểm định</h1><p class="sub">Căn cứ ma trận và bản đặc tả đề kiểm tra giữa học kì I Hóa học 12 năm học 2026–2027.</p><div class="kpis"><span class="kpi"><b>5</b> bộ đề khởi tạo</span><span class="kpi"><b>10,0</b> điểm / đề</span><span class="kpi"><b>'+Number(settings.duration||50)+'</b> phút hiện tại</span></div>'+
  '<section class="panel"><div class="eyebrow">EXAM STRUCTURE</div><h2 style="font-size:15px;margin:6px 0 12px">Cấu trúc từng phần</h2><table class="matrix"><thead><tr><th>Phần</th><th>Dạng</th><th>Số lượng</th><th>Điểm</th><th>Tỷ lệ</th></tr></thead><tbody><tr><td>I</td><td>Nhiều lựa chọn</td><td>16 câu</td><td>4,0</td><td>40%</td></tr><tr><td>II</td><td>Đúng – sai</td><td>3 câu × 4 ý</td><td>3,0</td><td>30%</td></tr><tr><td>III</td><td>Trả lời ngắn</td><td>4 câu</td><td>2,0</td><td>20%</td></tr><tr><td>IV</td><td>Tự luận</td><td>1 câu</td><td>1,0</td><td>10%</td></tr><tr><td colspan="2"><b>Tổng</b></td><td>24 câu chính / 33 lệnh hỏi</td><td><b>10,0</b></td><td><b>100%</b></td></tr></tbody></table></section>'+
  '<section class="panel" style="margin-top:13px"><div class="eyebrow">COGNITIVE DISTRIBUTION</div><h2 style="font-size:15px;margin:6px 0 12px">Phân bố mức độ tư duy</h2><table class="matrix"><thead><tr><th>Phần</th><th>Biết</th><th>Hiểu</th><th>Vận dụng</th></tr></thead><tbody><tr><td>I · 16 câu</td><td>12</td><td>4</td><td>0</td></tr><tr><td>II · 12 ý</td><td>4</td><td>8</td><td>0</td></tr><tr><td>III · 4 câu</td><td>0</td><td>0</td><td>4</td></tr><tr><td>IV · 1 câu</td><td>0</td><td>0</td><td>1</td></tr></tbody></table></section>'+
  '<section class="panel" style="margin-top:13px"><div class="eyebrow">TOPIC WEIGHTS</div><h2 style="font-size:15px;margin:6px 0 12px">Tỷ trọng điểm theo nội dung</h2><table class="matrix"><thead><tr><th>Chủ đề</th><th>Tỷ lệ</th><th>Điểm</th></tr></thead><tbody>'+rows.map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>').join("")+'</tbody></table></section>'+
@@ -98,6 +154,7 @@ function adminView(){
  '<section class="panel"><div class="eyebrow">DATA TOOLS</div><h2 style="font-size:15px;margin:6px 0 12px">Công cụ dữ liệu</h2><div class="toolbar"><button class="btn primary" data-action="export">Xuất ngân hàng JSON</button><label class="btn ghost" for="import-json">Nhập JSON</label><input id="import-json" class="hidden" type="file" accept=".json,application/json"><button class="btn ghost" data-action="dupes">Kiểm tra nội dung trùng</button><button class="btn ghost" data-action="reset-bank">Khôi phục dữ liệu gốc</button></div><div id="dupe-output"></div></section>'+
  '<section class="panel" style="margin-top:13px"><div class="eyebrow">BANK STATUS</div><h2 style="font-size:15px;margin:6px 0 12px">Kết quả kiểm định</h2><table class="matrix"><thead><tr><th>Đề</th><th>MCQ B/H</th><th>Đ/S B/H</th><th>Kết quả</th></tr></thead><tbody>'+v.map(x=>'<tr><td>'+esc(x.e.title)+'</td><td>'+x.v.mb+'/'+x.v.mh+'</td><td>'+x.v.tb+'/'+x.v.th+'</td><td class="'+(x.v.ok?"good":"bad")+'">'+(x.v.ok?"Đạt":"Cần sửa")+'</td></tr>').join("")+'</tbody></table></section>'+
  '<details class="panel" style="margin-top:13px"><summary style="cursor:pointer;font-size:11px;font-weight:700">Chỉnh sửa trực tiếp ngân hàng bằng JSON</summary><p class="form-help">Chỉnh sửa rồi lưu. Hệ thống từ chối dữ liệu không đạt cấu trúc ma trận.</p><textarea class="area json-editor" id="json-editor">'+esc(JSON.stringify(bank,null,2))+'</textarea><div class="toolbar"><button class="btn primary" data-action="save-editor">Lưu dữ liệu</button><button class="btn ghost" data-action="format-editor">Định dạng JSON</button></div></details><div class="notice info" style="margin-top:13px">Quản trị chạy phía trình duyệt. Thay đổi lưu trong localStorage, chưa có tài khoản hay đồng bộ nhiều thiết bị. Dùng Xuất JSON để sao lưu và đưa bản cập nhật vào mã nguồn GitHub.</div>';
+ $("#app").insertAdjacentHTML("afterbegin",'<section class="panel" style="margin-bottom:13px"><div class="eyebrow">EXAM SETTINGS</div><h2 style="font-size:15px;margin:6px 0 12px">Cài đặt phòng thi</h2><div class="form-grid"><div class="form-group"><label class="label" for="settings-duration">Thời lượng (phút)</label><input class="field" id="settings-duration" type="number" min="10" max="180" step="1" value="'+esc(settings.duration||50)+'"></div><div class="form-group"><label class="label" for="settings-tf-point">Điểm mỗi ý đúng–sai</label><input class="field" id="settings-tf-point" type="number" min="0.01" max="0.50" step="0.01" value="'+esc(settings.tfPoint==null?0.25:settings.tfPoint)+'"></div></div><button class="btn primary small" data-action="save-settings">Lưu cài đặt</button><p class="form-help" style="margin-top:10px">Mặc định: 50 phút và 0,25 điểm/ý. Ma trận nguồn không quy định chi tiết điểm từng ý đúng–sai; mức 0,25 là cấu hình tạm thời. Thay điểm này sẽ làm thay đổi tổng điểm và khiến kiểm định ma trận cảnh báo cho đến khi cấu hình khớp biểu điểm được giáo viên xác nhận.</p></section>');
  $("#import-json").addEventListener("change",importJSON);
 }
 function examNodes(e){return flat(e)}
@@ -172,7 +229,7 @@ document.addEventListener("click",ev=>{
  else if(a==="prev"){index=Math.max(0,index-1);persistActive();examView()}else if(a==="next"){index=(index+1)%nodes.length;persistActive();examView()}else if(a==="jump"){index=Number(b.dataset.index);persistActive();examView()}else if(a==="flag"){flags[nodes[index].id]=!flags[nodes[index].id];persistActive();examView()}else if(a==="submit")submit(false);
  else if(a==="exit"){if(confirm("Thoát phòng thi? Bài làm sẽ được lưu để tiếp tục sau.")){persistActive();if(timer)clearInterval(timer);timer=null;active=null;setView("home")}}
  else if(a==="history-open")openHistory(Number(b.dataset.index));else if(a==="history-clear")clearHistory();
- else if(a==="export")exportBank();else if(a==="dupes"){const d=duplicateCheck();$("#dupe-output").innerHTML=d.length?'<div class="notice"><b>Phát hiện '+d.length+' nội dung trùng.</b><ul>'+d.slice(0,20).map(x=>'<li>'+esc(x[0].exam+" · "+x[0].id)+" ↔ "+esc(x[1].exam+" · "+x[1].id)+'</li>').join("")+'</ul></div>':'<div class="notice info">Không phát hiện câu hỏi trùng hoàn toàn về nội dung.</div>'}
+ else if(a==="save-settings"){const d=Number($("#settings-duration").value),p=Number($("#settings-tf-point").value);if(!Number.isInteger(d)||d<10||d>180||!Number.isFinite(p)||p<=0||p>0.5){notify("Thời lượng phải từ 10–180 phút; điểm mỗi ý phải lớn hơn 0 và không quá 0,50.");return}settings={duration:d,tfPoint:p};save(KEYS.settings,settings);adminView();notify("Đã lưu cài đặt trên thiết bị này.");}else if(a==="export")exportBank();else if(a==="dupes"){const d=duplicateCheck();$("#dupe-output").innerHTML=d.length?'<div class="notice"><b>Phát hiện '+d.length+' nội dung trùng.</b><ul>'+d.slice(0,20).map(x=>'<li>'+esc(x[0].exam+" · "+x[0].id)+" ↔ "+esc(x[1].exam+" · "+x[1].id)+'</li>').join("")+'</ul></div>':'<div class="notice info">Không phát hiện câu hỏi trùng hoàn toàn về nội dung.</div>'}
  else if(a==="reset-bank"){if(confirm("Khôi phục ngân hàng gốc? Dữ liệu đã chỉnh sửa sẽ bị thay thế.")){bank=ORIGINAL.slice();save(KEYS.bank,bank);adminView();notify("Đã khôi phục ngân hàng gốc.")}}
  else if(a==="save-editor"){try{const x=JSON.parse($("#json-editor").value);if(!Array.isArray(x)||!x.length)throw new Error("Cần một mảng đề thi.");const errors=x.flatMap(e=>validate(e).issues);if(errors.length)throw new Error(errors.slice(0,8).join(" "));bank=x;save(KEYS.bank,bank);adminView();notify("Đã lưu ngân hàng.")}catch(e){notify("Không lưu được: "+e.message)}}
  else if(a==="format-editor"){try{$("#json-editor").value=JSON.stringify(JSON.parse($("#json-editor").value),null,2)}catch(e){notify("JSON hiện tại không hợp lệ.")}}
