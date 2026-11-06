@@ -24,6 +24,7 @@ Không cần cài Node.js hoặc cơ sở dữ liệu.
 - Mô phỏng sơ đồ minh họa và thí nghiệm ảo có điều khiển; các mô hình được gắn nhãn sơ đồ, không khẳng định là mô phỏng động học phân tử.
 - Bảng tuần hoàn rút gọn các nguyên tố thường gặp, tra cứu tính tan mẫu, thư viện công thức.
 - Lưu lịch sử, thống kê, câu hỏi đánh dấu và sổ lỗi sai trên thiết bị.
+- Trang “Câu đã làm” lưu từng câu đã được chấm (đúng hoặc sai), lựa chọn của người học, đáp án chuẩn và giải thích; có bộ lọc đúng/sai và chức năng luyện lại từng câu.
 
 ## Giới hạn cần biết
 
@@ -45,7 +46,8 @@ Các nhóm chủ đề được tổ chức theo yêu cầu sản phẩm. Phạm
 - Cân bằng Fe + O2 -> Fe2O3, H2 + O2 -> H2O, Al + HCl -> AlCl3 + H2.
 - Thử công thức có ngoặc như Ca(OH)2 + HCl -> CaCl2 + H2O.
 - Chọn phản ứng mẫu trong công cụ phản ứng; thử một cặp chưa có trong dữ liệu để xem thông báo giới hạn.
-- Làm sai một câu, kiểm tra sổ lỗi sai; tải lại trang để xác nhận dữ liệu còn lưu.
+- Làm sai một câu, kiểm tra Sổ lỗi sai và Câu đã làm; tải lại trang để xác nhận dữ liệu còn lưu.
+- Với từng chương, chọn đủ ba dạng câu hỏi và 25 câu; xác nhận đề có đúng 25 câu thuộc chương đã chọn.
 
 ## Ngân hàng câu hỏi mở rộng
 
