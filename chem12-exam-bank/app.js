@@ -37,7 +37,7 @@ function validate(exam){
 function countItems(){return bank.reduce((n,e)=>n+(e.mcq||[]).length+(e.tf||[]).reduce((s,g)=>s+(g.statements||[]).length,0)+(e.short||[]).length+(e.essay?1:0),0)}
 function scoreShort(value,q){
  const v=norm(value);if(!v)return false;
- if(q.requiredKeywords&&q.requiredKeywords.length)return q.requiredKeywords.every(k=>v.includes(norm(k)));
+ if(q.requiredKeywords&&q.requiredKeywords.length){const keys=q.requiredKeywords;const words=keys.filter(k=>!Number.isFinite(Number(String(k).replace(",","."))));const nums=keys.filter(k=>Number.isFinite(Number(String(k).replace(",",".")))).map(k=>Number(String(k).replace(",",".")));if(!words.every(k=>v.includes(norm(k))))return false;if(nums.length){const found=String(value).match(/[-+]?\\d+(?:[.,]\\d+)?/g)||[];const vals=found.map(x=>Number(x.replace(",",".")));if(!nums.some(n=>vals.some(x=>Math.abs(x-n)<=Number(q.tolerance||0.005))))return false}return true}
  const accepted=[q.expected].concat(q.aliases||[]).filter(Boolean);if(accepted.some(a=>norm(a)===v))return true;
  const n=Number(String(q.expected||"").replace(",",".")),x=Number(String(value).replace(",","."));
  return Number.isFinite(n)&&Number.isFinite(x)&&Math.abs(n-x)<=Number(q.tolerance||1e-8);

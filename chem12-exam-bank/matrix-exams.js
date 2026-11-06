@@ -33,13 +33,13 @@ F("II.1","Một nhóm học sinh so sánh ester, chất béo, xà phòng và ch�
 F("II.2","Một mẫu lòng trắng trứng được dùng để khảo sát tính chất của protein và vai trò enzyme. Xét các phát biểu sau.",[
 ["Protein là đại phân tử có cấu trúc gồm một hoặc nhiều chuỗi polypeptide.",true,"Các chuỗi polypeptide được tạo từ amino acid liên kết bằng liên kết peptide."],
 ["Đun nóng lòng trắng trứng có thể làm protein biến tính và đông tụ.",true,"Nhiệt làm thay đổi cấu trúc không gian của protein, làm các phân tử kết tụ tạo khối đông."],
-["Phản ứng biuret của protein trong môi trường kiềm với Cu(OH)₂ có thể tạo màu tím.",true,"Ion Cu²⁺ tạo phức với các liên kết peptide trong môi trường kiềm, cho màu tím đặc trưng."],
+["Phản ứng biuret của protein trong môi trường kiềm với Cu(OH)₂ tạo kết tủa đỏ gạch.",false,"Phản ứng biuret tạo phức màu tím với ion Cu²⁺; kết tủa đỏ gạch không phải hiện tượng của phản ứng này."],
 ["Thủy phân hoàn toàn protein có thể thu được các amino acid cấu thành.",true,"Thủy phân cắt liên kết peptide; khi thủy phân hoàn toàn, sản phẩm cuối cùng là các amino acid cấu thành chuỗi protein."]
 ]),
 F("II.3","Một phòng thực hành có các mẫu glucose, methylamine, amino acid và peptide. Xét các phát biểu tổng hợp sau.",[
 ["Methylamine thuộc loại amine vì có thể xem là sản phẩm thay một hydrogen của NH₃ bằng nhóm methyl.",true,"CH₃NH₂ có cấu tạo phù hợp định nghĩa amine, thuộc amine bậc một."],
 ["Glucose có thể tham gia phản ứng tráng bạc và lên men rượu tạo ethanol, carbon dioxide.",true,"Glucose có tính khử do dạng mạch hở chứa –CHO; trong điều kiện lên men thích hợp, C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂."],
-["Amino acid có thể ester hóa nhóm –COOH với alcohol trong điều kiện acid thích hợp.",true,"Nhóm carboxyl của amino acid có thể tham gia phản ứng ester hóa; cần xét môi trường phản ứng vì nhóm amino cũng có tính base."],
+["Amino acid không thể ester hóa nhóm –COOH với alcohol trong bất kì điều kiện nào.",false,"Nhóm carboxyl của amino acid có thể tham gia phản ứng ester hóa với alcohol trong điều kiện acid thích hợp."],
 ["Glucose ở dạng mạch vòng có nhóm –OH hemiacetal có thể tạo glycoside với alcohol; cellulose có thể tạo dẫn xuất nitrate khi phản ứng với nitric acid trong điều kiện thích hợp.",true,"Nhóm –OH hemiacetal ở carbon anomeric của glucose có thể tạo glycoside; nhiều nhóm –OH của cellulose có thể bị nitrate hóa để tạo cellulose nitrate."]
 ])
 ],
@@ -76,7 +76,7 @@ F("II.1","Xét chất béo lỏng, phản ứng hydrogen hóa và việc sử d�
 ["Chất béo là triester của glycerol với các acid béo.",true,"Đó là đặc điểm cấu tạo cơ bản của triacylglycerol."],
 ["Xà phòng thường là muối sodium hoặc potassium của acid béo mạch dài.",true,"Đây là khái niệm cơ bản về xà phòng; phần carboxylate tạo đầu ưa nước, gốc hydrocarbon tạo đuôi kị nước."],
 ["Hydrogen hóa chất béo lỏng có thể làm giảm số liên kết đôi C=C trong gốc acid béo.",true,"H₂ cộng vào liên kết đôi, làm tăng mức độ no của gốc acid béo."],
-["Chất béo có thể bị oxi hóa bởi oxygen không khí; chất giặt rửa tổng hợp cần được sử dụng đúng liều lượng.",true,"Các gốc acid béo không no bị oxi hóa có thể gây ôi hóa; chất giặt rửa phải dùng theo hướng dẫn và không xả thải tùy tiện."]
+["Chất béo không bị oxygen không khí oxi hóa nên dầu thực vật không thể bị ôi hóa trong quá trình bảo quản.",false,"Oxygen không khí có thể oxi hóa các gốc acid béo không no, tạo sản phẩm gây ôi hóa chất béo."]
 ]),
 F("II.2","Một số thí nghiệm được thực hiện với dung dịch protein và mẫu lòng trắng trứng.",[
 ["Protein là đại phân tử gồm một hoặc nhiều chuỗi polypeptide tạo từ các gốc amino acid.",true,"Đây là đặc điểm cấu tạo cơ bản của protein."],
@@ -88,7 +88,7 @@ F("II.3","Các mẫu thử thuộc ba chủ đề ester–lipid, carbohydrate v�
 ["Aniline là amine thơm vì nhóm –NH₂ gắn trực tiếp với vòng benzene.",true,"Cách phân loại dựa trên gốc hydrocarbon liên kết trực tiếp với nitrogen."],
 ["Glucose làm mất màu nước bromine do nhóm aldehyde bị oxi hóa; glucose cũng hòa tan Cu(OH)₂ ở nhiệt độ thường tạo dung dịch xanh lam.",true,"Nhóm –CHO của glucose bị nước bromine oxi hóa; nhiều nhóm –OH liền kề giúp glucose tạo phức xanh lam với Cu(OH)₂ ở nhiệt độ thường."],
 ["Dung dịch methylamine có thể tạo kết tủa Fe(OH)₃ khi tác dụng với FeCl₃ do môi trường có tính base.",true,"Methylamine nhận proton từ nước, tạo OH⁻; ion Fe³⁺ kết hợp OH⁻ tạo kết tủa Fe(OH)₃ nâu đỏ."],
-["Methylamine có thể phản ứng với HCl tạo muối methylammonium chloride và tạo phức với Cu(OH)₂; aniline phản ứng với nước bromine tạo kết tủa trắng.",true,"CH₃NH₂ + HCl → CH₃NH₃Cl; cặp electron tự do trên nitrogen hỗ trợ tạo phức với Cu(II). Aniline hoạt hóa vòng benzene và tạo 2,4,6-tribromoaniline kết tủa trắng với nước bromine."]
+["Methylamine phản ứng với HCl tạo muối methylammonium chloride đồng thời giải phóng khí hydrogen.",false,"Phản ứng acid–base tạo muối CH₃NH₃Cl; không có quá trình oxi hóa–khử để giải phóng H₂."]
 ])
 ],
 short:[
@@ -124,13 +124,13 @@ F("II.1","Một mẫu dầu thực vật được khảo sát trước và sau k
 ["Acid béo không no có ít nhất một liên kết đôi C=C trong mạch hydrocarbon.",true,"Liên kết đôi là dấu hiệu cấu tạo của acid béo không no."],
 ["Xà phòng có phân tử gồm đầu carboxylate ưa nước và đuôi hydrocarbon kị nước.",true,"Đặc điểm cấu tạo lưỡng tính bề mặt giúp xà phòng phân tán dầu mỡ trong nước."],
 ["Oxygen không khí có thể oxi hóa các gốc acid béo không no, góp phần gây ôi hóa.",true,"Các sản phẩm oxi hóa thứ cấp có thể tạo mùi, vị khó chịu."],
-["Xà phòng có thể tạo muối ít tan với Ca²⁺/Mg²⁺ trong nước cứng nên giảm hiệu quả giặt rửa.",true,"Ion calcium và magnesium làm kết tủa một phần anion carboxylate của xà phòng."]
+["Xà phòng không tạo kết tủa với Ca²⁺/Mg²⁺ trong nước cứng nên hiệu quả giặt rửa không thay đổi.",false,"Ion calcium và magnesium có thể tạo muối ít tan với anion xà phòng, làm giảm hiệu quả giặt rửa."]
 ]),
 F("II.2","Một nhóm học sinh quan sát sự đông tụ của lòng trắng trứng và tìm hiểu vai trò enzyme.",[
 ["Protein là hợp chất cao phân tử có một hoặc nhiều chuỗi polypeptide.",true,"Chuỗi polypeptide được hình thành từ các gốc amino acid."],
 ["Đun nóng hoặc thay đổi pH mạnh có thể làm protein biến tính.",true,"Nhiệt và môi trường acid/base cực đoan làm thay đổi cấu trúc không gian của protein."],
 ["Muối của một số kim loại nặng có thể làm protein kết tủa hoặc đông tụ.",true,"Ion kim loại nặng tương tác với các nhóm chức của protein, làm giảm độ tan và gây kết tụ."],
-["Enzyme là chất xúc tác sinh học có tính đặc hiệu, không bị tiêu hao hoàn toàn sau mỗi chu trình xúc tác.",true,"Enzyme xúc tác cơ chất phù hợp và được tái sinh sau khi giải phóng sản phẩm."]
+["Hoạt động xúc tác của enzyme không chịu ảnh hưởng của nhiệt độ và pH môi trường.",false,"Nhiệt độ và pH ảnh hưởng đến cấu trúc, hoạt tính enzyme; mỗi enzyme thường có khoảng điều kiện tối ưu."]
 ]),
 F("II.3","Một mẫu hỗn hợp bài tập kết hợp tính chất carbohydrate, amine và amino acid.",[
 ["Glucose và fructose có cùng công thức phân tử C₆H₁₂O₆ nhưng cấu tạo khác nhau.",true,"Glucose là aldohexose, fructose là ketohexose; chúng là đồng phân cấu tạo."],
