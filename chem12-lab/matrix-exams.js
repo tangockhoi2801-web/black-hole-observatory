@@ -39,8 +39,8 @@ F("II.2","Một mẫu lòng trắng trứng được dùng để khảo sát tí
 F("II.3","Một phòng thực hành có các mẫu glucose, methylamine, amino acid và peptide. Xét các phát biểu tổng hợp sau.",[
 ["Methylamine thuộc loại amine vì có thể xem là sản phẩm thay một hydrogen của NH₃ bằng nhóm methyl.",true,"CH₃NH₂ có cấu tạo phù hợp định nghĩa amine, thuộc amine bậc một."],
 ["Glucose có thể tham gia phản ứng tráng bạc do dạng mạch hở có nhóm aldehyde.",true,"Nhóm –CHO của glucose bị oxi hóa, ion bạc bị khử thành bạc kim loại."],
-["Ở pH nhỏ hơn điểm đẳng điện, amino acid thường mang điện tích tổng dương và có xu hướng chuyển về cathode.",true,"Môi trường acid proton hóa nhóm amino/carboxyl, làm amino acid mang điện tích tổng dương; cation chuyển về cathode âm."],
-["Thủy phân hoàn toàn một peptide chỉ cắt liên kết peptide và thu được các gốc amino acid ban đầu.",true,"Thủy phân hoàn toàn giải phóng amino acid cấu thành; điều kiện acid/base hoặc enzyme thích hợp được dùng để cắt liên kết peptide."]
+["Amino acid có thể ester hóa nhóm –COOH với alcohol trong điều kiện acid thích hợp.",true,"Nhóm carboxyl của amino acid có thể tham gia phản ứng ester hóa; cần xét môi trường phản ứng vì nhóm amino cũng có tính base."],
+["Glucose ở dạng mạch vòng có nhóm –OH hemiacetal; nhóm này có thể tham gia phản ứng tạo glycoside với alcohol trong điều kiện acid.",true,"Nhóm –OH hemiacetal ở carbon anomeric có thể chuyển thành nhóm –OR khi phản ứng với alcohol, tạo glycoside."]
 ])
 ],
 short:[
@@ -74,21 +74,21 @@ M("I.16","B","Protein và enzyme","Tính chất vật lí nào phù hợp với 
 tf:[
 F("II.1","Xét chất béo lỏng, phản ứng hydrogen hóa và việc sử dụng chất giặt rửa trong đời sống.",[
 ["Chất béo là triester của glycerol với các acid béo.",true,"Đó là đặc điểm cấu tạo cơ bản của triacylglycerol."],
+["Xà phòng thường là muối sodium hoặc potassium của acid béo mạch dài.",true,"Đây là khái niệm cơ bản về xà phòng; phần carboxylate tạo đầu ưa nước, gốc hydrocarbon tạo đuôi kị nước."],
 ["Hydrogen hóa chất béo lỏng có thể làm giảm số liên kết đôi C=C trong gốc acid béo.",true,"H₂ cộng vào liên kết đôi, làm tăng mức độ no của gốc acid béo."],
-["Chất béo có thể bị oxi hóa bởi oxygen không khí, gây ôi hóa.",true,"Quá trình oxi hóa các gốc acid béo không no có thể tạo các sản phẩm gây mùi, vị khó chịu."],
-["Có thể xả mọi chất giặt rửa tổng hợp với lượng tùy ý vì chúng luôn phân hủy tức thì trong môi trường.",false,"Cần sử dụng đúng liều lượng và xử lí nước thải phù hợp; không phải chất giặt rửa nào cũng phân hủy nhanh hoặc vô hại."]
+["Chất béo có thể bị oxi hóa bởi oxygen không khí; chất giặt rửa tổng hợp cần được sử dụng đúng liều lượng.",true,"Các gốc acid béo không no bị oxi hóa có thể gây ôi hóa; chất giặt rửa phải dùng theo hướng dẫn và không xả thải tùy tiện."]
 ]),
 F("II.2","Một số thí nghiệm được thực hiện với dung dịch protein và mẫu lòng trắng trứng.",[
-["Protein có thể bị thủy phân thành các peptide ngắn hơn và amino acid.",true,"Thủy phân cắt liên kết peptide; khi thủy phân hoàn toàn, sản phẩm cuối cùng là amino acid."],
-["Protein chứa liên kết peptide nên có thể tham gia phản ứng biuret.",true,"Các liên kết peptide tạo phức màu tím với Cu²⁺ trong môi trường kiềm."],
+["Protein là đại phân tử gồm một hoặc nhiều chuỗi polypeptide tạo từ các gốc amino acid.",true,"Đây là đặc điểm cấu tạo cơ bản của protein."],
+["Thủy phân protein có thể cắt liên kết peptide, tạo peptide ngắn hơn và cuối cùng là amino acid.",true,"Mức độ thủy phân phụ thuộc điều kiện; thủy phân hoàn toàn thu các amino acid cấu thành."],
 ["Protein có thể bị đông tụ khi đun nóng hoặc khi tác dụng với acid, base hay muối kim loại nặng.",true,"Các tác nhân này làm biến đổi cấu trúc không gian và tương tác giữa các phân tử protein."],
 ["Phản ứng với nitric acid đặc có thể tạo màu vàng với protein chứa gốc amino acid thơm.",true,"Phản ứng xanthoproteic tạo dẫn xuất nitro màu vàng; màu có thể chuyển cam trong môi trường kiềm."]
 ]),
 F("II.3","Các mẫu thử thuộc ba chủ đề ester–lipid, carbohydrate và hợp chất chứa nitrogen được khảo sát bằng thuốc thử.",[
 ["Aniline là amine thơm vì nhóm –NH₂ gắn trực tiếp với vòng benzene.",true,"Cách phân loại dựa trên gốc hydrocarbon liên kết trực tiếp với nitrogen."],
 ["Glucose làm mất màu nước bromine do nhóm aldehyde ở dạng mạch hở bị oxi hóa.",true,"Nước bromine oxi hóa nhóm –CHO thành nhóm carboxyl trong điều kiện phù hợp."],
-["Maltose là đường không khử vì cả hai carbon anomeric đều tham gia liên kết glycoside.",false,"Maltose còn một carbon anomeric tự do, nên có đầu khử và có thể tham gia phản ứng tráng bạc."],
-["Amino acid ở pH thấp hơn pI thường có điện tích tổng dương.",true,"Môi trường acid làm tăng mức độ proton hóa, tạo dạng cation."]
+["Dung dịch methylamine có thể tạo kết tủa Fe(OH)₃ khi tác dụng với FeCl₃ do môi trường có tính base.",true,"Methylamine nhận proton từ nước, tạo OH⁻; ion Fe³⁺ kết hợp OH⁻ tạo kết tủa Fe(OH)₃ nâu đỏ."],
+["Methylamine có thể tạo phức với Cu(OH)₂ trong điều kiện thích hợp.",true,"Phân tử amine có cặp electron tự do trên nitrogen, có thể phối trí với Cu(II), tạo phức màu xanh đậm trong điều kiện phù hợp."]
 ])
 ],
 short:[
@@ -122,9 +122,9 @@ M("I.16","B","Protein và enzyme","Tính chất vật lí nào phù hợp với 
 tf:[
 F("II.1","Một mẫu dầu thực vật được khảo sát trước và sau khi bảo quản không đúng cách; đồng thời so sánh với xà phòng.",[
 ["Acid béo không no có ít nhất một liên kết đôi C=C trong mạch hydrocarbon.",true,"Liên kết đôi là dấu hiệu cấu tạo của acid béo không no."],
-["Hydrogen hóa chất béo lỏng là quá trình cộng H₂ vào một phần liên kết đôi C=C.",true,"Quá trình này làm giảm số liên kết đôi và tăng độ no của gốc acid béo."],
+["Xà phòng có phân tử gồm đầu carboxylate ưa nước và đuôi hydrocarbon kị nước.",true,"Đặc điểm cấu tạo lưỡng tính bề mặt giúp xà phòng phân tán dầu mỡ trong nước."],
 ["Oxygen không khí có thể oxi hóa các gốc acid béo không no, góp phần gây ôi hóa.",true,"Các sản phẩm oxi hóa thứ cấp có thể tạo mùi, vị khó chịu."],
-["Xà phòng luôn tạo bọt tốt như nhau trong nước mềm và nước cứng.",false,"Ion Ca²⁺, Mg²⁺ trong nước cứng có thể kết tủa với anion xà phòng, làm giảm khả năng tạo bọt và giặt rửa."]
+["Xà phòng có thể tạo muối ít tan với Ca²⁺/Mg²⁺ trong nước cứng nên giảm hiệu quả giặt rửa.",true,"Ion calcium và magnesium làm kết tủa một phần anion carboxylate của xà phòng."]
 ]),
 F("II.2","Một nhóm học sinh quan sát sự đông tụ của lòng trắng trứng và tìm hiểu vai trò enzyme.",[
 ["Protein là hợp chất cao phân tử có một hoặc nhiều chuỗi polypeptide.",true,"Chuỗi polypeptide được hình thành từ các gốc amino acid."],
@@ -134,9 +134,10 @@ F("II.2","Một nhóm học sinh quan sát sự đông tụ của lòng trắng 
 ]),
 F("II.3","Một mẫu hỗn hợp bài tập kết hợp tính chất carbohydrate, amine và amino acid.",[
 ["Glucose và fructose có cùng công thức phân tử C₆H₁₂O₆ nhưng cấu tạo khác nhau.",true,"Glucose là aldohexose, fructose là ketohexose; chúng là đồng phân cấu tạo."],
-["Fructose không thể tham gia phản ứng Tollens trong môi trường kiềm vì là ketose.",false,"Fructose có thể chuyển hóa qua trung gian enediol thành aldose trong môi trường kiềm, nên có thể cho phản ứng Tollens."],
-["Methylamine có tính base do nguyên tử nitrogen có cặp electron tự do.",true,"Cặp electron tự do nhận proton từ nước hoặc acid."],
-["Ở pH lớn hơn pI, amino acid thường có điện tích tổng âm.",true,"Môi trường base làm amino acid mất proton, tạo dạng anion và chuyển về anode."]
+["Fructose có thể tham gia phản ứng Tollens trong môi trường kiềm dù là ketose.",true,"Fructose chuyển hóa qua trung gian enediol thành aldose, sau đó có thể khử ion bạc."],
+["Methylamine là amine bậc một; phản ứng với nitrous acid có thể giải phóng nitrogen.",true,"Amine bậc một no mạch hở phản ứng với HNO₂ tạo alcohol tương ứng, nitrogen và nước."],
+["Amino acid ở pH lớn hơn pI thường có điện tích tổng âm.",true,"Môi trường base làm amino acid mất proton, tạo dạng anion; anion chuyển về anode dương."]
+
 ])
 ],
 short:[
