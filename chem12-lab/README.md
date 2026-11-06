@@ -46,3 +46,32 @@ Các nhóm chủ đề được tổ chức theo yêu cầu sản phẩm. Phạm
 - Thử công thức có ngoặc như Ca(OH)2 + HCl -> CaCl2 + H2O.
 - Chọn phản ứng mẫu trong công cụ phản ứng; thử một cặp chưa có trong dữ liệu để xem thông báo giới hạn.
 - Làm sai một câu, kiểm tra sổ lỗi sai; tải lại trang để xác nhận dữ liệu còn lưu.
+
+## Ngân hàng câu hỏi mở rộng
+
+Phiên bản cập nhật có 225 câu hỏi mẫu, được chia thành 9 mảng nội dung hiện có, mỗi mảng có 25 câu:
+- Điện hóa học.
+- Đại cương về kim loại.
+- Kim loại nhóm IA.
+- Kim loại nhóm IIA.
+- Kim loại chuyển tiếp và phức chất.
+- Ester và lipid.
+- Carbohydrate.
+- Hợp chất hữu cơ chứa nitrogen.
+- Polymer.
+
+Câu hỏi được biên soạn mới theo các dạng trắc nghiệm nhiều lựa chọn, đúng/sai và trả lời ngắn. Câu trắc nghiệm có giải thích cho đáp án đúng và từng phương án nhiễu; câu đúng/sai có giải thích từng mệnh đề; câu tính toán có các bước giải khi cần.
+
+Khi chọn một chương, bộ tạo đề chỉ lấy câu hỏi của chương đó. Nếu người học lọc riêng một dạng câu hỏi hoặc một mức độ mà số câu phù hợp chưa đủ, website sẽ báo số câu thực tế và không lấy câu từ chương khác để bù.
+
+## Nguồn học liệu tham khảo và đối chiếu
+
+Các nguồn sau được dùng để đối chiếu cấu trúc chủ đề và kiến thức nền. Câu hỏi trong CHEM12 LAB được diễn đạt và biên soạn lại, không sao chép nguyên văn đề bài từ các trang này.
+
+- [Thư viện số OLM – SGK Hóa học 12](https://school.olm.vn/index.php/thu-vien-so/doc-sach/sach.4492861288.4492861288): mục lục và tên bài theo chương.
+- [OLM – Khóa học Hóa học 12](https://olm.vn/bg/hoa-hoc-12/): cấu trúc bài học và luyện tập theo CTGDPT 2018.
+- [VietJack – Lý thuyết Hóa học 12 Kết nối tri thức](https://vietjack.com/hoa-hoc-12-kn/ly-thuyet-hoa-hoc-lop-12.jsp): đối chiếu các chủ đề và phạm vi từng bài.
+- [OpenStax Chemistry 2e – Electrochemistry](https://openstax.org/books/chemistry-2e/pages/17-introduction): khái niệm oxi hóa – khử, pin galvanic, thế điện cực, ăn mòn và điện phân.
+- [OpenStax Chemistry 2e – Organic Chemistry](https://openstax.org/books/chemistry-2e/pages/20-introduction): nhóm chức hữu cơ, ester, amine và amide.
+
+Các nguồn tham khảo không thay thế việc giáo viên rà soát đáp án, thuật ngữ, phạm vi kiến thức và mức độ phù hợp với sách giáo khoa nhà trường đang sử dụng.
