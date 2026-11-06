@@ -54,3 +54,11 @@ body.dark{--bg:#0d1726;--panel:#142237;--ink:#dbe8f5;--muted:#8da1b7;--line:#263
 .review-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;padding-top:9px;border-top:1px solid #eff3f7}
 .review-footer small{font-size:8px;color:#9ba9b8}
 @media(max-width:680px){.tf-row{grid-template-columns:minmax(0,1fr);gap:8px}.tf-actions{justify-content:flex-end;width:100%}.review-answer{grid-template-columns:1fr}.review-card{padding:14px}.review-status{margin-left:0}.review-total{width:100%}}
+
+body.dark .review-card,body.dark .bank-coverage-note{background:#142237;border-color:#263a54}
+body.dark .review-answer>div,body.dark .review-statement{background:#1a304a;border-color:#2b465e}
+body.dark .review-answer b,body.dark .review-statement b{color:#d1e2f1}
+body.dark .review-explanation,body.dark .review-statement p,body.dark .review-statement small,body.dark .review-total{color:#9db2c8}
+body.dark .bank-coverage-note>b{color:#afc5d9}
+body.dark .bank-count-list>div{color:#9db2c8}
+body.dark .review-footer{border-color:#283d56}
