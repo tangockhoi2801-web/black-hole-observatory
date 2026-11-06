@@ -75,7 +75,7 @@ M("I.16","B","Protein và enzyme","Phát biểu nào đúng về tính chất v�
 ],
 tf:[
 F("II.1","Xét acid béo, chất béo và hiệu quả giặt rửa. Đánh dấu đúng hoặc sai cho từng phát biểu.",[
-["Acid béo không no có ít nhất một liên kết đôi C=C trong mạch hydrocarbon.",true,"Liên kết đôi C=C là dấu hiệu cấu tạo của acid béo không no."],
+["Đầu carboxylate phân cực của phân tử xà phòng có xu hướng tương tác với nước.",true,"Đầu carboxylate mang điện tích, ưa nước; đuôi hydrocarbon kị nước có xu hướng tương tác với dầu mỡ."],
 ["Xà phòng thường chứa anion carboxylate của acid béo mạch dài.",true,"Nhóm carboxylate tạo đầu ưa nước của phân tử xà phòng."],
 ["Hydrogen hóa dầu thực vật làm tăng số liên kết đôi C=C trong gốc acid béo.",false,"Hydrogen hóa cộng H₂ vào liên kết đôi, làm số liên kết đôi giảm."],
 ["Có thể dùng chất giặt rửa tổng hợp với liều lượng tùy ý vì mọi chất đều phân hủy ngay và không ảnh hưởng môi trường.",false,"Cần dùng theo hướng dẫn; tốc độ phân hủy và tác động môi trường khác nhau giữa các chất."]
@@ -87,8 +87,8 @@ F("II.2","Một số mẫu protein được khảo sát bằng nhiệt, acid và
 ["Enzyme là chất xúc tác sinh học nhưng bị tiêu hao hoàn toàn sau mỗi phản ứng.",false,"Enzyme tham gia chu trình xúc tác và không bị tiêu hao theo tỉ lệ như chất phản ứng."]
 ]),
 F("II.3","Một mẫu gồm carbohydrate và hợp chất chứa nitrogen được phân tích. Đánh dấu đúng hoặc sai cho từng phát biểu.",[
-["Fructose là monosaccharide thuộc loại ketohexose ở dạng mạch hở.",true,"Fructose có sáu carbon và nhóm ketone ở dạng mạch hở."],
-["Methylamine có thể làm quỳ tím ẩm chuyển xanh do có tính base.",true,"Methylamine nhận proton từ nước, tạo môi trường có tính base."],
+["Cellulose có thể hòa tan trong nước Schweizer (Svayde), trong khi không tan trong nước thường.",true,"Nước Schweizer tạo phức với cellulose, giúp hòa tan cellulose; cellulose không tan trong nước thường."],
+["Aniline phản ứng với nước bromine tạo kết tủa trắng 2,4,6-tribromoaniline.",true,"Nhóm –NH₂ hoạt hóa mạnh vòng benzene, định hướng thế vào các vị trí 2, 4, 6 và tạo 2,4,6-tribromoaniline kết tủa trắng."],
 ["Ở pH = pI, amino acid luôn mang điện tích tổng dương.",false,"Tại pH = pI, amino acid có điện tích tổng bằng 0."],
 ["Cellulose và tinh bột đều cho màu xanh tím đặc trưng khi tác dụng với iodine.",false,"Tinh bột cho màu xanh tím; cellulose không cho hiện tượng màu đặc trưng đó."]
 ])
